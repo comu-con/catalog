@@ -1,0 +1,145 @@
+@import "tailwindcss" source('../..');
+@import "@nuxt/ui";
+
+@theme static {
+  /* === BLUE ROYAL === */
+  --color-blue-50:  #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6; /* intermediário */
+  --color-blue-600: #2563eb; /* base */
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue-950: #172554;
+
+  /* === ORANGE === */
+  --color-orange-50:  #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316; /* base */
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange-950: #431407;
+
+  /* === NEUTRAL (COAL) === */
+  --color-coal-50:  #f6f6f6;
+  --color-coal-100: #e4e4e4;
+  --color-coal-200: #cacaca;
+  --color-coal-300: #a5a5a5;
+  --color-coal-400: #7d7d7d;
+  --color-coal-500: #666666;
+  --color-coal-600: #525252;
+  --color-coal-700: #404040;
+  --color-coal-800: #2f2f2f;
+  --color-coal-900: #1e1e1e;
+  --color-coal-950: #121212;
+
+  /* === YELLOW (WARNING) === */
+  --color-yellow-50:  #fefce8;
+  --color-yellow-100: #fef9c3;
+  --color-yellow-200: #fef08a;
+  --color-yellow-300: #fde047;
+  --color-yellow-400: #facc15;
+  --color-yellow-500: #eab308; /* base */
+  --color-yellow-600: #ca8a04;
+  --color-yellow-700: #a16207;
+  --color-yellow-800: #854d0e;
+  --color-yellow-900: #713f12;
+  --color-yellow-950: #422006;
+
+  /* === RED (ERROR) === */
+  --color-red-50:  #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-200: #fecaca;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444; /* base */
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  --color-red-900: #7f1d1d;
+  --color-red-950: #450a0a;
+
+  /* === GREEN (SUCCESS) === */
+  --color-green-50:  #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e; /* base */
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+  --color-green-950: #052e16;
+
+  /* === SKY (INFO) === */
+  --color-sky-50:  #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-300: #7dd3fc;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9; /* base */
+  --color-sky-600: #0284c7;
+  --color-sky-700: #0369a1;
+  --color-sky-800: #075985;
+  --color-sky-900: #0c4a6e;
+  --color-sky-950: #082f49;
+
+  --font-mono: "Source Code Pro"; 
+  --font-sans: "Nunito";
+  --font-heading: "Poppins", var(--font-sans);
+}
+
+@theme {
+  --container-8xl: 86rem;
+}
+
+@layer base {
+  :root {
+    --ui-container: var(--container-8xl);
+  }
+  
+  .light {
+    --ui-bg: var(--ui-color-neutral-50);
+    --ui-bg-muted: var(--ui-color-neutral-100);
+    --ui-bg-elevated: var(--ui-color-neutral-200);
+    --ui-bg-accented: var(--ui-color-neutral-300);
+  }
+
+  h1, h2, h3, h4, h5, h6, nav,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    @apply font-heading [&+&]:-mt-0.5;
+  }
+
+  h1, .h1 {
+    @apply text-5xl font-medium;
+  }
+
+  h2, .h2 {
+    @apply text-3xl font-medium;
+  }
+
+  h3, .h3 {
+    @apply text-xl font-medium;
+  }
+
+  h4, .h4 {
+    @apply text-lg font-medium;
+  }
+
+  h5, .h5 {
+    @apply text-sm font-bold;
+  }
+
+  h6, .h6 {
+    @apply text-xs font-bold;
+  }
+}
