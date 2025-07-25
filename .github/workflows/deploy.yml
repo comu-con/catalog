@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update submodules
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CI_TOKEN }}
+          submodules: true
+      - run: |
+          git pull --recurse-submodules
+          git submodule update --remote --recursive
+      - name: Build Nuxt application
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: |
+          npm install
+          npx nuxt build --preset github_pages
+      - name: Uploads site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-generated-site
+          path: .output/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to github pages repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CI_TOKEN }}
+          repository: comu-con/comu-con.github.io
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: static-generated-site
+          path: ./
+      - run: |
+          git config --global user.name 'comu-bot'
+          git config --global user.email 'comu-bot@noreply.github.com'
+          if [[ `git status --porcelain --untracked-files=no` ]]; then
+            # Changes
+            git add .
+            git commit -m 'ci: full site regen'
+            git push -f origin main
+          else
+            # No changes
+            echo "No changes to static pages"
+            exit 0
+          fi

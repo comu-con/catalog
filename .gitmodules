@@ -1,6 +1,3 @@
-[submodule ".output/public"]
-	path = .output/public
-	url = https://github.com/comu-con/comu-con.github.io
 [submodule "content/static"]
 	path = content/static
 	url = https://github.com/comu-con/catalog-static

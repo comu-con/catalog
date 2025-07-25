@@ -34,7 +34,7 @@ export default defineContentConfig({
   collections: {
     sites: defineCollection({
       type: 'data',
-      source: 'sites/**/*.json',
+      source: 'cms/**/*.json',
       schema: site,
     }),
     types: defineCollection({
