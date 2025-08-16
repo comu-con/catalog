@@ -3,8 +3,7 @@ import { defineTransformer } from '@nuxt/content';
 export default defineTransformer({
   name: 'geo-point',
   extensions: ['.json'],
-  transform(content, options) {
-    console.log(content, options);
+  transform(content) {
     if (content.geo && typeof content.geo === 'object' && !Array.isArray(content.geo) && 'latitude' in content.geo && 'longitude' in content.geo) {
       const latitude = Number(content.geo.latitude);
       const longitude = Number(content.geo.longitude);
